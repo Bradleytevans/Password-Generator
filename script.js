@@ -11,6 +11,10 @@ function writePassword() {
   passwordText.value = password;
 }
 
+function UserInput(password) {
+  document.getElementById("password").textContent = password;
+}
+
 generateBtn = addEventListener("click", writePassword); {
 };
 
@@ -34,7 +38,7 @@ function generatePassword() {
     // First if statement that uses user input prompts to determine choices
     // Else if for 4 positive options
     else if (confirmCharacter && confirmNumber && confirmUppercase && confirmLowercase) {
-        choices = concat(numberChar, lowerChar, upperChar, specialChar);
+        choices = specialChar.concat(numberChar, lowerChar, upperChar);
     }
     // Else if for 3 positive options
     else if (confirmCharacter && confirmNumber && confirmUppercase) {
@@ -61,10 +65,8 @@ function generatePassword() {
     }
     else if (confirmLowercase && confirmNumber) {
         choices = lowerChar.concat(numberChar);
-
     } else if (confirmLowercase && confirmUppercase) {
         choices = lowerChar.concat(upperChar);
-
     } else if (confirmNumber && confirmUppercase) {
         choices = numberChar.concat(upperChar);
     }
@@ -78,29 +80,20 @@ function generatePassword() {
     else if (confirmLowercase) {
         choices = lowerChar;
     }
-    // Created space variable to fill uppercase conversion
     else if (confirmUppercase) {
-        choices = space.concat(upperChar);
+        choices = upperChar;
     };
-
-    // password variable is an array placeholder for user generated amount of length
+    
     var finalPassword = [];
-
-    // Start random selection variables:
-    // Random selection for all variables: 
     for (var i = 0; i < passwordLength; i++) {
         var pickChoices = choices[Math.floor(Math.random() * choices.length)];
         finalPassword.push(pickChoices);
     }
-    // This joins the password array and converts it to a string
-    // Worked with a tutor to incorporate this option
     var password = finalPassword.join("");
     UserInput(password);
     return password;
 }
-function UserInput(password) {
-    document.getElementById("password").textContent = password;
-}
+
 
 var copy = document.querySelector("#copy");
 function copyPassword() {
