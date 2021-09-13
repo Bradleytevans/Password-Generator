@@ -1,3 +1,18 @@
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
 //Password Variables
 specialChar = ["~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "[", "}", "]", "|", "/", ":", ";", " ", "'", "<", ",", ">", ".", "?", "/"]
 numberChar = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
@@ -100,6 +115,6 @@ function copyPassword() {
   document.getElementById("password").select();
   alert("Password copied to clipboard!");
 }
-copy.addEventListener("", copyPassword);
+copy.addEventListener("click", copyPassword);
 
 
